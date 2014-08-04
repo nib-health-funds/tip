@@ -15,6 +15,29 @@ function merge() {
 }
 
 /**
+ * Find the immediate parent which contains `position: relative`
+ * @param   {HTMLElement} el
+ * @returns {HTMLElement}
+ */
+function offsetParent(el) {
+
+  if (el.offsetParent) {
+    return el.offsetParent;
+  }
+
+  //because when el has `display: none` or `position: fixed` then `offsetParent` returns null -- should we calc the position when the tip is displayed instead??
+  while (el.parentNode !== document.body && el.parentNode !== document.rootElement) {
+    el = el.parentNode;
+    var style = window.getComputedStyle ? window.getComputedStyle(el) : el.currentStyle;
+    if (style.position != 'static') {
+      return el;
+    }
+  }
+  return document.body;
+}
+
+
+/**
  * Create a tip
  * @constructor
  * @param   {Object}  options
@@ -148,7 +171,7 @@ Tip.prototype = {
   position: function(x, y) {
 
     if (this._parent) {
-      var parentOffset    = offset(this._parent);
+      var parentOffset = offset(offsetParent(this.el));
       x = x - parentOffset.left;
       y = y - parentOffset.top;
     }
