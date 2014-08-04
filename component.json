@@ -1,0 +1,9 @@
+{
+  "name": "tip",
+  "description": "A tip... Not a tooltip. Just a tip, a triangle you can position on the page.",
+  "scripts": ["index.js"],
+  "styles": ["index.css"],
+  "dependencies": {
+    "timoxley/offset": "1.0.2"
+  }
+}

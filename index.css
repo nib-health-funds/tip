@@ -1,0 +1,54 @@
+
+.tip {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.tip--direction-up.tip--position-bottom {
+  transform: translateX(-50%);
+}
+
+.tip--direction-down.tip--position-top {
+  transform: translateX(-50%) translateY(-100%) ;
+}
+
+.tip--direction-right.tip--position-left {
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.tip--direction-left.tip--position-right {
+  transform: translateY(-50%);
+}
+
+.tip--direction-up {
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-style: solid;
+  border-right-color: transparent;
+  border-bottom-style: solid;
+}
+
+.tip--direction-down {
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-style: solid;
+  border-right-color: transparent;
+  border-top-style: solid;
+}
+
+.tip--direction-left {
+  border-top-style: solid;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  border-right-style: solid;
+}
+
+.tip--direction-right {
+  border-top-style: solid;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  border-left-style: solid;
+}

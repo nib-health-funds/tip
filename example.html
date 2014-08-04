@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Tip example</title>
+    <link href="build/build.css" rel="stylesheet"/>
+    <style>
+
+        .paragraph {
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        .alert {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            padding: 10px;
+            color: #fff;
+            font-weight: bold;
+            font-family: sans-serif;
+            text-align: center;
+            background-color: lightskyblue;
+        }
+
+        .message {
+            position: relative;
+            margin-top: 12px;
+            padding: 10px;
+            color: white;
+            background-color: red;
+        }
+
+        /* === set tip size and colour === */
+
+        .tip--direction-up {
+            border-left-width: 12px;
+            border-right-width: 12px;
+            border-bottom: 12px solid red;
+        }
+
+        .tip--direction-down {
+            border-left-width: 12px;
+            border-right-width: 12px;
+            border-top: 12px solid red;
+        }
+
+        .tip--direction-left {
+            border-top-width: 12px;
+            border-bottom-width: 12px;
+            border-right: 12px solid red;
+        }
+
+        .tip--direction-right {
+            border-top-width: 12px;
+            border-bottom-width: 12px;
+            border-left: 12px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <p class="paragraph">
+        This is an important message for your safety.
+        <span class="alert">!</span>
+    </p>
+    <div class="message">Read it!</div>
+
+    <script src="build/build.js"></script>
+    <script>
+        var Tip = require('tip');
+
+        var alert   = document.querySelector('.alert');
+        var message = document.querySelector('.message');
+
+        var tip = new Tip();
+        tip
+            .prependTo(message)
+            .show()
+            .positionAt(alert, 'bottom')
+        ;
+
+    </script>
+</body>
+</html>
