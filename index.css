@@ -5,6 +5,10 @@
   height: 0;
 }
 
+.tip--hidden {
+  display: none;
+}
+
 .tip--direction-up.tip--position-bottom {
   transform: translateX(-50%);
 }
