@@ -21,7 +21,9 @@ function merge() {
  */
 function offsetParent(el) {
 
-  if (el.offsetParent) {
+  //IE8-9 returns body as the offsetParent if the element is hidden, so ignore the provided offsetParent if it is the body and our
+  //  loop below to find the correct one (if it is actually body the below loop will still work)
+  if (el.offsetParent &&  el.offsetParent !== document.body) {
     return el.offsetParent;
   }
 
