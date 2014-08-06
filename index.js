@@ -66,21 +66,12 @@ function Tip(options) {
   //set the direction
   this.direction(this.options.direction);
 
-  /**
-   * Reposition the tip
-   */
-  function reposition() {
-    if (self._visible && self._target) {
-      self.positionAt(self._target, self._position);
-    }
-  }
-
   //reposition the tip when the user stops resizing the window
   window.addEventListener('resize', function() {
     if (self.resizeTimeout) {
       clearTimeout(self.resizeTimeout);
     }
-    self.resizeTimeout = setTimeout(reposition, 100);
+    self.resizeTimeout = setTimeout(self.reposition.bind(self), 100);
   });
 
 }
@@ -244,6 +235,17 @@ Tip.prototype = {
     //save the position
     this._target    = target;
     this._position  = position;
+    return this;
+  },
+
+  /**
+   * Reposition the tip based on the previous position
+   * @returns {Tip}
+   */
+  reposition: function() {
+    if (this._visible && this._target) {
+      this.positionAt(this._target, this._position);
+    }
     return this;
   }
 
