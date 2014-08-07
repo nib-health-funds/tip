@@ -71,7 +71,9 @@ function Tip(options) {
     if (self.resizeTimeout) {
       clearTimeout(self.resizeTimeout);
     }
-    self.resizeTimeout = setTimeout(self.reposition.bind(self), 100);
+    self.resizeTimeout = setTimeout(function() {
+      if (self._visible) self.reposition();
+    }, 100);
   });
 
 }
@@ -243,7 +245,7 @@ Tip.prototype = {
    * @returns {Tip}
    */
   reposition: function() {
-    if (this._visible && this._target) {
+    if (this._target) {
       this.positionAt(this._target, this._position);
     }
     return this;
