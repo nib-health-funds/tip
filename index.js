@@ -193,40 +193,46 @@ Tip.prototype = {
    * @returns {Tip}
    */
   positionAt: function(target, position) {
-    var
-      targetOffset  = offset(target),
-      left      = targetOffset.left,
-      top       = targetOffset.top
-    ;
+    var targetOffset  = offset(target);
 
-    //determine the pixel tip position
-    switch (position) {
+    //if the element is disconnected from the DOM then lets not position it now, user will have to call reposition
+    if (targetOffset) {
 
-      case 'top':
-        left  += target.offsetWidth/2;
-        break;
+      var
+        left      = targetOffset.left,
+        top       = targetOffset.top
+      ;
 
-      case 'bottom':
-        left  += target.offsetWidth/2;
-        top   += target.offsetHeight;
-        break;
+      //determine the pixel tip position
+      switch (position) {
 
-      case 'left':
-        top   += target.offsetHeight/2;
-        break;
+        case 'top':
+          left  += target.offsetWidth/2;
+          break;
 
-      case 'right':
-        left  += target.offsetWidth;
-        top   += target.offsetHeight/2;
-        break;
+        case 'bottom':
+          left  += target.offsetWidth/2;
+          top   += target.offsetHeight;
+          break;
 
-      default:
-        throw new Error('Invalid position "'+position+'"');
+        case 'left':
+          top   += target.offsetHeight/2;
+          break;
+
+        case 'right':
+          left  += target.offsetWidth;
+          top   += target.offsetHeight/2;
+          break;
+
+        default:
+          throw new Error('Invalid position "'+position+'"');
+
+      }
+
+      //position the tip at the x, y co-ordinate
+      this.position(left, top);
 
     }
-
-    //position the tip at the x, y co-ordinate
-    this.position(left, top);
 
     //set the position class
     if (this._position) {
