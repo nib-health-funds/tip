@@ -167,13 +167,12 @@ Tip.prototype = {
 
     if (this._parent) {
       var parentOffset = offset(offsetParent(this.el));
-      x = x - parentOffset.left;
-      y = y - parentOffset.top;
+      if (x != null) x = x - parentOffset.left;
+      if (y != null) y = y - parentOffset.top;
     }
 
-    this.el.style.left  = x+'px';
-    this.el.style.top   = y+'px';
-
+    if (x != null) this.el.style.left  = x+'px';
+    if (y != null) this.el.style.top   = y+'px';
 
     //remove the position class
     if (this._position) {
@@ -205,6 +204,16 @@ Tip.prototype = {
 
       //determine the pixel tip position
       switch (position) {
+
+        case 'h-center':
+          left  += target.offsetWidth/2;
+          top   = null;
+          break;
+
+        case 'v-center':
+          left  = null;
+          top   += target.offsetHeight/2;
+          break;
 
         case 'top':
           left  += target.offsetWidth/2;

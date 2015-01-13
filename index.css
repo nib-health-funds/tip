@@ -9,10 +9,22 @@
   display: none;
 }
 
-.tip--direction-up.tip--position-bottom {
+.tip--direction-up.tip--position-h-center,
+.tip--direction-down.tip--position-h-center {
   transform: translateX(-50%);
 }
 
+.tip--direction-left.tip--position-v-center,
+.tip--direction-right.tip--position-v-center {
+  transform: translateY(-50%);
+}
+
+.tip--direction-up.tip--position-bottom,
+.tip--direction-down.tip--position-bottom {
+  transform: translateX(-50%);
+}
+
+.tip--direction-up.tip--position-top,
 .tip--direction-down.tip--position-top {
   transform: translateX(-50%) translateY(-100%) ;
 }

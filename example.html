@@ -28,6 +28,7 @@
             margin-top: 12px;
             padding: 10px;
             color: white;
+            line-height: 20px;
             background-color: red;
         }
 
@@ -74,11 +75,11 @@
         var alert   = document.querySelector('.alert');
         var message = document.querySelector('.message');
 
-        var tip = new Tip();
+        var tip = new Tip({direction: 'right'});
         tip
             .prependTo(message)
             .show()
-            .positionAt(alert, 'bottom')
+            .positionAt(alert, 'v-center')
         ;
 
     </script>
