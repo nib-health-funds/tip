@@ -1,0 +1,17 @@
+{
+  "name": "@nib/tip",
+  "version": "0.2.0",
+  "description": "A tip... Not a tooltip. Just a tip, a triangle you can position on the page.",
+  "main": "index.js",
+  "main.css": "index.css",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nib-health-funds/tip.git"
+  },
+  "dependencies": {
+    "document-offset": "1.0.2"
+  },
+  "browser": {
+    "offset": "document-offset"
+  }
+}
